@@ -1,0 +1,32 @@
+<div *ngIf="phoneNumbers.length > 0 else elseCardP">
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-xl-4 mb-5" *ngFor="let phone of phoneNumbers">        
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title text-center">{{phone.firstName}} {{phone.lastName}}</h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-center" style="font-size: 18px;">{{phone.description}}</p>
+                    <p class="text-center" style="font-size: 18px;">{{phone.number}}</p>
+                    <div class="btn-group" style="width: 100%;">
+                        <a class="btn btn-primary" [routerLink]="['/phoneForm', phone._id]">Edit</a>
+                        <button class="btn btn-danger" (click)="deletePhoneNumber(phone._id)">Delete</button>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #elseCardP>
+    <div class="row">
+        <div class="col-sm-8 colmd-8 col-xl-5 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <p>Not Number added, please added one here!</p>
+                    <a class="btn btn-primary btn-block" routerLink="phoneForm">Start!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>    
